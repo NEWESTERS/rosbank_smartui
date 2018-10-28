@@ -1,0 +1,107 @@
+<h1>ClientUi</h1>
+
+<style type="text/css">
+	.category {
+		width: 100%;
+ 		display: flex;
+ 		flex-direction: row;
+ 		flex-wrap: wrap;
+ 	}
+
+ 	.category>div {
+ 		margin: 5px;
+ 	}
+
+	.button {
+		width: 140px;
+		height: 40px;
+		background-color: #be0034;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border: solid 2px #be0034;
+		transition: all .3s ease;
+	}
+
+	.button:hover {
+		background-color: white;
+	}
+
+	a {	
+		cursor: pointer;
+		color: white;
+		text-decoration: none;
+		transition: all .3s ease;
+	}
+
+	a:hover {
+		color: #be0034;
+	}
+
+	#listbox {
+		align-items: flex-start;
+		display: flex;
+		flex-direction: row;
+	}
+
+	#listbox>ul {
+		width: 150px;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+</style>
+
+<% if !@user.business_segment.nil? %>
+	<h2>Business segment: <%= @user.business_segment.name %></h2>
+<% end %>
+<h3>Role: <%= UserRole.where("id = ?", @user.role_id).name %></h3>
+
+<% if UserRole.where("id = ?", @user.role_id).name != 'admin' %>
+	<div class="button">
+		<%= link_to "Edit", :controller => "layout", :action => "generator", :user => @user.id %>
+	</div>
+
+	<% @layout.each do |category| %>
+		<h1><%= category[:name] %></h1>
+		<div class="category">
+			<% category["modules"].each do |uimodule| %>
+				<%= stylesheet_link_tag 'modules/' + uimodule["name"] %>
+				<%= render :partial => 'modules/' + uimodule["name"], :locals => { :id => uimodule["name"] } %>
+			<% end %>
+		</div>
+	<% end %>
+<% else %>
+	<div class="button">
+		<%= link_to "Module statistics", :controller => "uimodule", :action => "list" %>
+	</div>
+	
+<br />
+
+	<h1>Edit templates</h1>
+
+	<div id="listbox">
+		<ul>
+			<li><h3>Small</h3></li>
+			<% UserRole.where('business_segment_id = ?', 1).each do |role| %>
+				<li><%= link_to role.name, :controller => "layout", :action => "generator", :preset => LayoutPreset.where("role_id = ?", role.id)[0].id %></li>
+			<% end %>
+		</ul>
+
+		<ul>
+			<li><h3>Medium</h3></li>
+			<% UserRole.where('business_segment_id = ?', 2).each do |role| %>
+				<li><%= link_to role.name, :controller => "layout", :action => "generator", :preset => LayoutPreset.where("role_id = ?", role.id)[0].id %></li>
+			<% end %>
+		</ul>
+
+		<ul>
+			<li><h3>Large</h3></li>
+			<% UserRole.where('business_segment_id = ?', 3).each do |role| %>
+				<li><%= link_to role.name, :controller => "layout", :action => "generator", :preset => LayoutPreset.where("role_id = ?", role.id)[0].id %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
+
+

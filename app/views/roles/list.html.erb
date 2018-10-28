@@ -1,0 +1,40 @@
+<h1>Roles list</h1>
+<style type="text/css">
+	ul {
+		padding: 0;
+		list-style: none;
+	}
+
+	li {
+		padding: 10px;
+		border: solid 1px #be0034;
+		width: 250px;
+		text-align: center;
+		margin: 10px;
+		color: black;
+		background-color: #be0034;
+		transition: all .3s ease;
+	}
+
+	li:hover {
+		background-color: white;
+	}
+
+	a {
+		cursor: pointer;
+		text-decoration: none;
+		color: white;
+		transition: all .3s ease;
+	}
+
+	a:hover {
+		color: #be0034;
+	}
+</style>
+<ul>
+	<%= link_to (user = User.find_by_id(1)).name, :controller => "client_ui", :action => "view", :user_id => user.id %>
+	
+	<% @roles.each do |r| %>
+		<li><%= link_to "#{r.name} #{(seg = r.business_segment).nil? ? '' : "— " + seg.name + " segment"}", :controller => "client_ui", :action => "view", :role_id => r.id %></li>
+	<% end %>
+</ul>

@@ -1,0 +1,75 @@
+<h1>Modules</h1>
+
+<style type="text/css">
+	table {
+		border: solid 1px #d8d8d8;
+	}
+
+	td {
+		border: none;
+		padding: 5px;
+		width: 80px;
+		text-align: center;
+	}
+
+	th {
+		border: none;
+		background-color: #be0034;
+		color: white;
+		padding: 5px;
+	}
+</style>
+
+<h2>Small business</h2>
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Look</th>
+		<th>Uses number</th>
+		<th>Uses percentage</th>
+	</tr>
+	<% @stats_small.each do |item| %>
+		<tr>
+			<td><%= item.uimodule.name %></td>
+			<td><%= item.uimodule.look %></td>
+			<td><%= item.segment_actuality %></td>
+			<td><b><%= "#{(item.segment_actuality.to_f / @segment_sum_small * 100).round}%" %></b></td>
+		</tr>
+	<% end %>
+</table>
+
+<h2>Medium business</h2>
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Look</th>
+		<th>Uses number</th>
+		<th>Uses percentage</th>
+	</tr>
+	<% @stats_medium.each do |item| %>
+		<tr>
+			<td><%= item.uimodule.name %></td>
+			<td><%= item.uimodule.look %></td>
+			<td><%= item.segment_actuality %></td>
+			<td><b><%= "#{(item.segment_actuality.to_f / @segment_sum_medium * 100).round}%" %></b></td>
+		</tr>
+	<% end %>
+</table>
+
+<h2>Large business</h2>
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Look</th>
+		<th>Uses number</th>
+		<th>Uses percentage</th>
+	</tr>
+	<% @stats_large.each do |item| %>
+		<tr>
+			<td><%= item.uimodule.name %></td>
+			<td><%= item.uimodule.look %></td>
+			<td><%= item.segment_actuality %></td>
+			<td><b><%= "#{(item.segment_actuality.to_f / @segment_sum_large * 100).round}%" %></b></td>
+		</tr>
+	<% end %>
+</table>

@@ -1,0 +1,34 @@
+<%= stylesheet_link_tag 'modules/generator' %>
+<%= javascript_include_tag 'modules/generator.js' %>
+
+<div id="input_wrp">
+	<div id="new_category">
+		<%= image_tag "add.svg" %>
+	</div>
+
+	<div id="name_and_make">
+		<input type="text" id="name_category">
+		<div id="make_category">New Category</div>
+	</div>
+</div>
+
+<div id="workspace"></div>
+	<div id="submit">Apply</div>
+</div>
+
+<div id="module_form">
+
+<select id="select_name">
+	<option value="contracts_large">Contracts (big)</option>
+	<option value="graph_large">Graphic  (big)</option>
+	<option value="plan_small">Plan (small)</option>
+	<option value="quarter_small">Quarter (small)</option>
+	<option value="sales_small">Sales (small)</option>
+	<option value="transactions_small">Transction (small)</option>
+</select>
+
+<div id="apply">OK</div>
+
+<div style="display: none;" id="user" value=""><%= @user %></div>
+<div style="display: none;" id="preset" value=""><%= @preset %></div>
+
