@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_27_222836) do
+ActiveRecord::Schema.define(version: 2018_10_28_074401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,12 +25,12 @@ ActiveRecord::Schema.define(version: 2018_10_27_222836) do
   create_table "layout_presets", force: :cascade do |t|
     t.bigint "business_segment_id"
     t.bigint "layout_id"
-    t.bigint "role_id"
+    t.bigint "user_role_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["business_segment_id"], name: "index_layout_presets_on_business_segment_id"
     t.index ["layout_id"], name: "index_layout_presets_on_layout_id"
-    t.index ["role_id"], name: "index_layout_presets_on_role_id"
+    t.index ["user_role_id"], name: "index_layout_presets_on_user_role_id"
   end
 
   create_table "layouts", force: :cascade do |t|
@@ -69,14 +69,14 @@ ActiveRecord::Schema.define(version: 2018_10_27_222836) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "company"
-    t.bigint "role_id"
+    t.bigint "user_role_id"
     t.bigint "layout_id"
     t.bigint "business_segment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["business_segment_id"], name: "index_users_on_business_segment_id"
     t.index ["layout_id"], name: "index_users_on_layout_id"
-    t.index ["role_id"], name: "index_users_on_role_id"
+    t.index ["user_role_id"], name: "index_users_on_user_role_id"
   end
 
 end

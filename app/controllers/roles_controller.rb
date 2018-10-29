@@ -1,5 +1,5 @@
 class RolesController < ApplicationController
   def list
-  	@roles = UserRole.all
+  	@users = User.all
   end
 end

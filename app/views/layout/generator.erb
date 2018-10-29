@@ -1,5 +1,6 @@
 <%= stylesheet_link_tag 'modules/generator' %>
 <%= javascript_include_tag 'modules/generator.js' %>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
 <div id="input_wrp">
 	<div id="new_category">
@@ -12,23 +13,23 @@
 	</div>
 </div>
 
-<div id="workspace"></div>
+	<div id="workspace"></div>
 	<div id="submit">Apply</div>
-</div>
+
 
 <div id="module_form">
 
 <select id="select_name">
-	<option value="contracts_large">Contracts (big)</option>
-	<option value="graph_large">Graphic  (big)</option>
-	<option value="plan_small">Plan (small)</option>
-	<option value="quarter_small">Quarter (small)</option>
-	<option value="sales_small">Sales (small)</option>
-	<option value="transactions_small">Transction (small)</option>
+	<option text = 'Contracts (big)' value="contracts_large">Contracts (big)</option>
+	<option text = 'Graphic  (big)' value="graph_large">Graphic  (big)</option>
+	<option text = 'Plan (small)' value="plan_small">Plan (small)</option>
+	<option text = 'Quarter (small)' value="quarter_small">Quarter (small)</option>
+	<option text = 'Sales (small)' value="sales_small">Sales (small)</option>
+	<option text = 'Transction (small)' value="transactions_small">Transction (small)</option>
 </select>
 
 <div id="apply">OK</div>
-
+</div>
 <div style="display: none;" id="user" value=""><%= @user %></div>
 <div style="display: none;" id="preset" value=""><%= @preset %></div>
 

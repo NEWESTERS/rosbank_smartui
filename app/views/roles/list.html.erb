@@ -31,10 +31,8 @@
 		color: #be0034;
 	}
 </style>
-<ul>
-	<%= link_to (user = User.find_by_id(1)).name, :controller => "client_ui", :action => "view", :user_id => user.id %>
-	
-	<% @roles.each do |r| %>
-		<li><%= link_to "#{r.name} #{(seg = r.business_segment).nil? ? '' : "— " + seg.name + " segment"}", :controller => "client_ui", :action => "view", :role_id => r.id %></li>
+<ul>	
+	<% @users.each do |u| %>
+		<li><%= link_to "#{u.name} #{u.user_role.name} #{(seg = u.business_segment).nil? ? '' : "— " + seg.name + " segment"}", :controller => "client_ui", :action => "view", :user_id => u.id %></li>
 	<% end %>
 </ul>

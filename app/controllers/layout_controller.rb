@@ -1,13 +1,20 @@
 class LayoutController < ApplicationController
-	def add
-		@layout = Layout.new({ :structure => params[:structure] })
+	skip_before_action :verify_authenticity_token
 
-		if params.has_key?(:user)
-			User.find_by_id(params[:user]).update({ :layout_id => @layout.id })
+	def add
+		json = JSON.parse(request.raw_post)
+
+		@layout = Layout.new({ :structure => json["data"] })
+		@layout.save
+
+		if !json["user"].empty?
+			User.find_by_id(json["user"]).update({ :layout_id => @layout.id })
+			redirect_to root_path
 		end
 
-		if params.has_key?(:preset)
-			LayoutPreset.find_by_id(params[:preset]).update({ :layout_id => @layout.id })
+		if !json["preset"].empty?
+			LayoutPreset.find_by_id(json["preset"]).update({ :layout_id => @layout.id })
+			redirect_to root_path
 		end
 	end
 

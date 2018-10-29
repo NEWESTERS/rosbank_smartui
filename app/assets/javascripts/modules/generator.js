@@ -3,7 +3,7 @@
 
 let count = 0
 let color_count = 0
-let colors = ["#03A9F4", "#00BCD4", "#009688","#4CAF50","#CDDC39","#f9ca24","#6ab04c"]
+let colors = ["#bf0135", "#333", "#b2b2b2"]
 
 
 //------------------------DRAG 'N DROP!!!!---------------------------
@@ -169,7 +169,7 @@ let colors = ["#03A9F4", "#00BCD4", "#009688","#4CAF50","#CDDC39","#f9ca24","#6a
 	getColour = _=>{
 		let result = colors[color_count] 
 		color_count ++
-		if(color_count>6)color_count=0
+		if(color_count>2)color_count=0
 		return result
 
 	}
@@ -215,7 +215,6 @@ function Category(name , order){
 function Module(order,name){
 	this.name = name
 	this.element = document.createElement('div')
-	this.element.innerHTML = this.name
 	this.element.classList.add('module')
 	this.element.classList.add('draggable')
 	this.element.setAttribute('name',this.name)
@@ -241,7 +240,7 @@ function sortInOrder(target, elements){
 	}
 }
 
-window.onload = _ => {
+
 	let workspace = document.getElementById('workspace')
 	let name_category = document.getElementById('name_category')
 	let make_category = document.getElementById('make_category')
@@ -275,6 +274,8 @@ window.onload = _ => {
 					let m_name = document.getElementById('select_name').value
 					categories[count_catch].modules.push(new Module(i,m_name))
 					categories[count_catch].modules[i].element.style.background = getColour()
+					var selind = document.getElementById("select_name").options.selectedIndex
+					categories[count_catch].modules[i].element.innerHTML =  document.getElementById("select_name").options[selind].text
 					console.log(categories[count_catch].modules[i])
 					categories[count_catch].element.appendChild(categories[count_catch].modules[i++].element)
 				
@@ -316,16 +317,22 @@ window.onload = _ => {
   //  		};
 		// xmlhttp.send(JSON.stringify(arr));
 
+		let obj = {
+			user: user,
+			preset: preset,
+			data: arr
+		}
+
 		$.ajax({
   			type: "POST",
   			url: "/layout/add",
-  			data: arr,
-  			success: function() { alert("done") }
+  			data: JSON.stringify(obj),
+  			success: function() { console.log("done") }
 		})
 		
 	}
 	
-}
+
 
 
 

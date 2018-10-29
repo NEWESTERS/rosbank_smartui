@@ -55,15 +55,15 @@
 <% if !@user.business_segment.nil? %>
 	<h2>Business segment: <%= @user.business_segment.name %></h2>
 <% end %>
-<h3>Role: <%= UserRole.where("id = ?", @user.role_id).name %></h3>
+<h3>Role: <%= @user.user_role.name %></h3>
 
-<% if UserRole.where("id = ?", @user.role_id).name != 'admin' %>
+<% if @user.user_role.name != 'admin' %>
 	<div class="button">
 		<%= link_to "Edit", :controller => "layout", :action => "generator", :user => @user.id %>
 	</div>
 
 	<% @layout.each do |category| %>
-		<h1><%= category[:name] %></h1>
+		<h1><%= category["name"] %></h1>
 		<div class="category">
 			<% category["modules"].each do |uimodule| %>
 				<%= stylesheet_link_tag 'modules/' + uimodule["name"] %>
@@ -84,21 +84,21 @@
 		<ul>
 			<li><h3>Small</h3></li>
 			<% UserRole.where('business_segment_id = ?', 1).each do |role| %>
-				<li><%= link_to role.name, :controller => "layout", :action => "generator", :preset => LayoutPreset.where("role_id = ?", role.id)[0].id %></li>
+				<li><%= role.name %></li>
 			<% end %>
 		</ul>
 
 		<ul>
 			<li><h3>Medium</h3></li>
 			<% UserRole.where('business_segment_id = ?', 2).each do |role| %>
-				<li><%= link_to role.name, :controller => "layout", :action => "generator", :preset => LayoutPreset.where("role_id = ?", role.id)[0].id %></li>
+				<li><%= role.name %></li>
 			<% end %>
 		</ul>
 
 		<ul>
 			<li><h3>Large</h3></li>
 			<% UserRole.where('business_segment_id = ?', 3).each do |role| %>
-				<li><%= link_to role.name, :controller => "layout", :action => "generator", :preset => LayoutPreset.where("role_id = ?", role.id)[0].id %></li>
+				<li><%= role.name %></li>
 			<% end %>
 		</ul>
 	</div>
