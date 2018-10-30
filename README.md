@@ -35,4 +35,5 @@ Ruby on Rails client-server application.
 
 ## Authors
 @NEWESTERS — backend (Ruby On Rails)
+
 @vgreen — frontend (Javascript)
