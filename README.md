@@ -1,5 +1,5 @@
 ## Synopsis
-###What is the problem of the clients?
+### What is the problem of the clients?
 
 They need to get the services and information for their businesses in fast and easy way. They have no time for doing mechanic work. As we know “Time is money”.
 
