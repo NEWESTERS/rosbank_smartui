@@ -34,6 +34,6 @@ Usable smart modular interface for different types of clients.
 Ruby on Rails client-server application.
 
 ## Authors
-@NEWESTERS — backend (Ruby On Rails)
+[@NEWESTERS](https://github.com/NEWESTERS) — backend (Ruby On Rails)
 
-@vgreen — frontend (Javascript)
+[@vgreen](https://github.com/vgreen) — frontend (Javascript)
